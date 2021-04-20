@@ -3,14 +3,21 @@ task sample_data: :environment do
   starting = Time.now
   if Rails.env.development?
     FollowRequest.destroy_all
+    Comment.destroy_all
+    Like.destroy_all
+    Photo.destroy_all
     User.destroy_all
   end
 
-  12.times do
+  usernames = Array.new {Faker::Name.first_name }
+  usernames << "alice"
+    usernames << "bob"
+
+  usernames.each do |username|
     name = Faker::Name.first_name 
     u = User.create(
-      email: "#{name}@email.com",
-      username: name,
+      email: "#{username}@email.com",
+      username: username.downcase,
       password: "password",
       private: [true, false].sample
     )
