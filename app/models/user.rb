@@ -14,6 +14,7 @@
 #  comments_count         :integer          default(0)
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  photos_count           :integer          default(0)
 #
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
