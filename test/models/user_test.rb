@@ -9,7 +9,7 @@
 #  reset_password_sent_at :datetime
 #  remember_created_at    :datetime
 #  username               :citext
-#  private                :boolean
+#  private                :boolean          default(TRUE)
 #  likes_count            :integer          default(0)
 #  comments_count         :integer          default(0)
 #  created_at             :datetime         not null
