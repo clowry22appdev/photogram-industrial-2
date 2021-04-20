@@ -11,9 +11,13 @@
 # It's strongly recommended that you check this file into your version control system.
 
 
+ActiveRecord::Schema.define(version: 2021_04_18_230255) do
+
+
 ActiveRecord::Schema.define(version: 2021_04_18_224835) do
 
 ActiveRecord::Schema.define(version: 2021_04_18_223807) do
+
 
 
   # These are extensions that must be enabled in order to support this database
@@ -31,6 +35,8 @@ ActiveRecord::Schema.define(version: 2021_04_18_223807) do
   end
 
 
+
+
   create_table "follow_requests", force: :cascade do |t|
     t.bigint "recipient_id", null: false
     t.bigint "sender_id", null: false
@@ -39,6 +45,16 @@ ActiveRecord::Schema.define(version: 2021_04_18_223807) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["recipient_id"], name: "index_follow_requests_on_recipient_id"
     t.index ["sender_id"], name: "index_follow_requests_on_sender_id"
+  end
+
+
+  create_table "likes", force: :cascade do |t|
+    t.bigint "fan_id", null: false
+    t.bigint "photo_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["fan_id"], name: "index_likes_on_fan_id"
+    t.index ["photo_id"], name: "index_likes_on_photo_id"
   end
 
 
@@ -75,6 +91,13 @@ ActiveRecord::Schema.define(version: 2021_04_18_223807) do
 
   add_foreign_key "follow_requests", "users", column: "recipient_id"
   add_foreign_key "follow_requests", "users", column: "sender_id"
+  add_foreign_key "likes", "photos"
+  add_foreign_key "likes", "users", column: "fan_id"
+
+
+  add_foreign_key "follow_requests", "users", column: "recipient_id"
+  add_foreign_key "follow_requests", "users", column: "sender_id"
+
 
   add_foreign_key "photos", "users", column: "owner_id"
 end
