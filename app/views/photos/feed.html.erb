@@ -24,8 +24,7 @@
 </div>
 
 
-<%=@user.feed.count%>
-  <%@user.feed.each do |photo|%>
+  <%@user.discover.each do |photo|%>
     <%= render "photos/photo", photo: photo%>
 
   <%end%>

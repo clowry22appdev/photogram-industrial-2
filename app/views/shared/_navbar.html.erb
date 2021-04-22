@@ -8,7 +8,17 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item dropdown">
+          <li class = "nav-item">
+            <!--<i class="fa fa-users" aria-hidden="true"></i> -->
+            <%= link_to "Feed", feed_path, class: "nav-link"%>
+          </li>
+
+          <li class = "nav-item">
+            <%= link_to "Discover", discover_path, class: "nav-link"%>
+
+          </li>
+
+         <!-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Resources
             </a>
@@ -18,7 +28,7 @@
               <a class="dropdown-item" href="/follow_requests">Follow Requests</a>
               <a class="dropdown-item" href="/likes">Likes</a>
             </div>
-          </li>
+          </li> -->
         </ul>
 
         <ul class="navbar-nav">
