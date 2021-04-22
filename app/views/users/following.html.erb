@@ -26,7 +26,7 @@
 <%=current_user.leaders.count%>
 
 <div class="list-group">
-  <%current_user.followers.each do |user|%> 
+  <%@user.leaders.each do |user|%> 
     <%= render "users/user", user: user%>
   <%end%>
 
