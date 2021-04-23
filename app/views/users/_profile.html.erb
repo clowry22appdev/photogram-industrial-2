@@ -1,0 +1,10 @@
+<div class = "row">
+  <div class = "col-md-3 offset-md-3">      
+    <%=@user.followers.count%><%= link_to "Followers", followers_path(@user.username), class: "nav-link"%>
+  </div>
+
+  <div class = "col-md-3 offset-md-3">
+    <%=@user.leaders.count%><%= link_to "Following", leaders_path(@user.username), class: "nav-link"%>
+  </div>
+
+</div>
