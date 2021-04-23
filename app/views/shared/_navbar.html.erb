@@ -6,40 +6,31 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 
+
+
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class = "nav-item">
-            <!--<i class="fa fa-users" aria-hidden="true"></i> -->
-            <%= link_to "Feed", feed_path, class: "nav-link"%>
-          </li>
-
-          <li class = "nav-item">
-            <%= link_to "Discover", discover_path, class: "nav-link"%>
-
-          </li>
-
-         <!-- <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Resources
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="/photos">Photos</a>
-              <a class="dropdown-item" href="/comments">Comments</a>
-              <a class="dropdown-item" href="/follow_requests">Follow Requests</a>
-              <a class="dropdown-item" href="/likes">Likes</a>
-            </div>
-          </li> -->
+        <% if user_signed_in?%>
+        <%= link_to "Feed", feed_path(current_user.username), class: "nav-link"%>
+        <%= link_to "Discover", discover_path(current_user.username), class: "nav-link"%>
+        <%end%>
         </ul>
 
         <ul class="navbar-nav">
           <% if user_signed_in?%>
-          <li class="nav-item">
+            <%= link_to "Add post", new_photo_path, class: "nav-link"%>
+            <%= link_to "Your profile", user_path, class: "nav-link"%>
+            
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%=current_user.username%>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <%= link_to "Edit #{current_user.username}", edit_user_registration_path, class: "nav-link"%>
-            </li>
-
-            <li class="nav-item">
               <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "nav-link"%>
-            </li>
+
+            </div>
+          </li>
 
           <%else%>
             <li class="nav-item">
